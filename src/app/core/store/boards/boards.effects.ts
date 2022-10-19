@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import {BoardService} from "../../../services/board.service";
 import {
   addBoard,
-  appLoaded, deleteBoard,
+  appLoaded, deleteBoard, editBoard, editBoardFailed, editBoardSuccess,
   fetchAddBoardFailed,
   fetchAddBoardSuccess,
   fetchAllBoardFailed,
@@ -23,12 +23,7 @@ export class BoardsEffects {
         this.boardService.getAllBoards().pipe(
           map((boards) => fetchAllBoardSuccess({boards: boards})),
           catchError((err) =>
-            of(fetchAllBoardFailed({error: err, callback: () => {
-                if(err.message.includes('401')) {
-                  this.router.navigate(['auth']);
-                }
-              }
-            })))
+            of(fetchAllBoardFailed({error: err})))
         )
       )
     )
@@ -41,12 +36,20 @@ export class BoardsEffects {
         this.boardService.addBoard(action.board).pipe(
           map((board) => fetchAddBoardSuccess({board: board})),
           catchError((err) =>
-            of(fetchAddBoardFailed({error: err, callback: () => {
-                if(err.message.includes('401')) {
-                  this.router.navigate(['auth']);
-                }
-              }
-            })))
+            of(fetchAddBoardFailed({error: err})))
+        )
+      )
+    )
+  );
+
+  editBoard$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(editBoard),
+      switchMap((action) =>
+        this.boardService.editBoard(action).pipe(
+          map((board) => editBoardSuccess(board)),
+          catchError((err) =>
+            of(editBoardFailed({error: err})))
         )
       )
     )
@@ -57,15 +60,9 @@ export class BoardsEffects {
       ofType(deleteBoard),
       switchMap((action) =>
         this.boardService.deleteBoard(action.id).pipe(
-          tap(() => console.log('tap')),
           map((id) => fetchDeleteBoardSuccess({id: id})),
           catchError((err) =>
-            of(fetchDeleteBoardFailed({error: err, callback: () => {
-                if(err.message.includes('401')) {
-                  this.router.navigate(['auth']);
-                }
-              }
-            })))
+            of(fetchDeleteBoardFailed({error: err})))
         )
       )
     )
@@ -73,7 +70,6 @@ export class BoardsEffects {
 
   constructor(
     private actions$: Actions,
-    private boardService: BoardService,
-    private router: Router
+    private boardService: BoardService
   ) {}
 }

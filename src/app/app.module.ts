@@ -12,24 +12,32 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "../environments/environment";
 import {boardsReducer} from "./core/store/boards/boards.reducer";
 import {BoardsEffects} from "./core/store/boards/boards.effects";
+import {CoreModule} from "./core/core.module";
+import {ReactiveFormsModule} from "@angular/forms";
+import {FeaturesModule} from "./features/features.module";
+import {tasksReducer} from "./core/store/tasks/tasks.reducer";
+import {TasksEffects} from "./core/store/tasks/tasks.effects";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    StoreModule.forRoot({user: userReducer, boards: boardsReducer}),
-    EffectsModule.forRoot([UserEffects, BoardsEffects]),
-    HttpClientModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-      autoPause: true,
-    }),
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        StoreModule.forRoot({user: userReducer, boards: boardsReducer, tasks: tasksReducer}),
+        EffectsModule.forRoot([UserEffects, BoardsEffects, TasksEffects]),
+        HttpClientModule,
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: environment.production,
+            autoPause: true,
+        }),
+        CoreModule,
+        ReactiveFormsModule,
+        FeaturesModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
