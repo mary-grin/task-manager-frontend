@@ -1,0 +1,64 @@
+.toolbar {
+  display: grid;
+  grid-template-columns: 6fr 2fr 2fr 2fr auto;
+  align-items: center;
+}
+h1 {
+  font-size: 42px;
+  font-weight: 700;
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+}
+input {
+  width: 140px;
+  height: 30px;
+  box-sizing: border-box;
+  border: #57CBD2 solid 2px;
+  padding-left: 5px;
+  &:focus {
+    outline: none;
+  }
+}
+select {
+  appearance: none;
+  background-color: #57CBD2;
+  color: #fff;
+  border: none;
+  padding: 6px 0 7px 10px;
+  margin: 0;
+  width: 140px;
+  height: 30px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: inherit;
+  line-height: 17px;
+  &:focus {
+    outline: none;
+  }
+  option {
+    background-color: white;
+    color: #57CBD2;
+  }
+}
+lable {
+  font-size: 18px;
+}
+.addButton {
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover {
+    scale: 1.1;
+    transition: 0.5s;
+  }
+}
+.return {
+  cursor: pointer;
+  &:hover {
+    color: #28888E;
+  }
+  height: 20px;
+}

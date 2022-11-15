@@ -1,0 +1,35 @@
+.header {
+  background-color: #57CBD2;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 29px 0px;
+  .logo {
+    font-size: 32px;
+    font-weight: 500;
+    color: #fff;
+  }
+}
+
+.header-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.avatar {
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}

@@ -1,0 +1,29 @@
+<app-toolbar
+  [name]="'Dashboard'"
+  (addButtonEmitter)="openAddForm()"
+  class="toolbar"
+  [isTasks]="false"
+  (searchEmitter)="searchBoards($event)"
+  (sortEmitter)="sortBoards($event)"
+></app-toolbar>
+
+<app-boards [boards]="boards |  filter: searchText" (editEmitter)="saveIdBoard($event)"></app-boards>
+
+<app-add-board-form
+  *ngIf="isOpenedCreateForm"
+  (closeAddForm)="openAddForm()"
+  class="add-form"
+  (submitForm)="addBoard($event)"
+  [title]="'Create new board'"
+  [buttonTitle]="'Create'"
+></app-add-board-form>
+
+<app-add-board-form
+  *ngIf="isOpenedEditForm"
+  (closeAddForm)="openEditForm()"
+  class="add-form"
+  (submitForm)="editBoard($event)"
+  [title]="'Edit board'"
+  [buttonTitle]="'Save'"
+></app-add-board-form>
+

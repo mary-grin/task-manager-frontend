@@ -1,0 +1,5 @@
+<form [formGroup]="authorization" (ngSubmit)="submitForm.emit(authorization)">
+  <input type="text" formControlName="username" class="username" placeholder="Username">
+  <input type="password" formControlName="password" class="password" placeholder="Password">
+  <button type="submit">{{buttonName}}</button>
+</form>

@@ -32,7 +32,9 @@ export class UserEffects {
         this.authService.getUserInfo().pipe(
           map((user) => getUserSuccess(user)),
           catchError((err) =>
-            of(getUserFailed({error: err})))
+
+            of(getUserFailed({error: err}))),
+          tap((err) => console.log(err))
         )),
       tap(() => this.router.navigate(['/dashboard']))
     )
@@ -68,10 +70,10 @@ export class UserEffects {
       switchMap(() =>
         this.authService.logout().pipe(
           map(() => logOutSuccess()),
+          tap(() => this.router.navigate(['/auth'])),
           catchError(err =>
             of(logOutFailed({error: err})))
         )),
-      tap(() => this.router.navigate(['/auth']))
     )
   );
 

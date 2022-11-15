@@ -1,0 +1,22 @@
+<app-toolbar
+  [name]="board!.name"
+  (addButtonEmitter)="openAddForm()"
+  [isTasks]="true"
+  (searchEmitter)="searchTasks($event)"
+  (sortEmitter)="sortTasks($event)"
+></app-toolbar>
+
+
+<div class="tasks">
+  <app-tasks-column status="NEW" class="column" [searchText]="searchText"></app-tasks-column>
+  <app-tasks-column status="IN PROCESS" class="column" [searchText]="searchText"></app-tasks-column>
+  <app-tasks-column status="DONE" class="column" [searchText]="searchText"></app-tasks-column>
+</div>
+
+
+<app-add-task-form
+  *ngIf="isOpenedCreateForm"
+  (closeAddForm)="openAddForm()"
+  class="add-form"
+  (submitForm)="addTask($event)"
+></app-add-task-form>

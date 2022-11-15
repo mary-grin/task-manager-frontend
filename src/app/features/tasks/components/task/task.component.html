@@ -1,0 +1,5 @@
+<div class="task">
+  <div class="task-name">{{task.name}}</div>
+  <div>{{task.createdDate | date: 'dd/MM/yy'}}</div>
+  <img src="assets/image/options_dark.svg" alt="options" (click)="openDetailsEmitter.emit()">
+</div>

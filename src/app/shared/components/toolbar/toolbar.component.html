@@ -1,0 +1,23 @@
+<span *ngIf="isTasks" [routerLink]="['/dashboard']" class="return">&larr; All boards</span>
+<div class="toolbar">
+  <h1>{{name}}</h1>
+  <div class="search-block block">
+    <label>Search</label>
+    <input type="text" placeholder="Type name" [(ngModel)]="searchText" (input)="searchEmitter.emit(searchText)">
+  </div>
+  <form class="sort-block block" [formGroup]="sort">
+    <label>Sort by:</label>
+    <select formControlName="mode" (change)="sortEmitter.emit({sort, order})">
+      <option value="name">Name</option>
+      <option value="createdDate">Date</option>
+    </select>
+  </form>
+  <form class="order-block block" [formGroup]="order">
+    <label>Order by:</label>
+    <select formControlName="ordering" (change)="sortEmitter.emit({sort, order})">
+      <option value="ascending">Ascending</option>
+      <option value="descending">Descending</option>
+    </select>
+  </form>
+  <div class="addButton" (click)="addButtonEmitter.emit()"><img src="assets/image/addButton.svg"></div>
+</div>

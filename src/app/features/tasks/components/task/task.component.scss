@@ -1,0 +1,11 @@
+.task {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  color: #6B6B6B;
+  padding: 18px 15px;
+  border: #28888E 2px solid;
+}
+.task-name {
+  flex: 2 1 auto;
+}

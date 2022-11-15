@@ -1,0 +1,11 @@
+<div class="popup">
+  <div class="popup-body">
+    <img src="assets/image/closeButton.svg" class="close" (click)="closeAddForm.emit()" alt="close">
+    <form class="form-body" [formGroup]="addBoardForm" (ngSubmit)="submitForm.emit(addBoardForm)">
+      <span class="form-title">{{title}}</span>
+      <input type="text" placeholder="Name" formControlName="name">
+      <input type="text" placeholder="Description" formControlName="description">
+      <button type="submit">{{buttonTitle}}</button>
+    </form>
+  </div>
+</div>

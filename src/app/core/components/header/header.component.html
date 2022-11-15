@@ -1,0 +1,14 @@
+<div class="header">
+  <div class="_container">
+    <div class="header-items">
+      <div class="logo">Task Manager</div>
+      <div class="auth" *ngIf="user.username" (click)="clickOnUser.emit()">
+        <div>{{user.username}}</div>
+        <div class="avatar">
+          <img src="assets/image/default_avatar.svg" *ngIf="!user.imgSrc" alt="User Avatar">
+          <img src="{{url}}{{user.imgSrc}}" *ngIf="user.imgSrc" alt="User Avatar">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="popup">
+  <div class="popup-body">
+    <img src="assets/image/closeButton.svg" class="close" (click)="closeAddForm.emit()" alt="close">
+    <form class="form-body" [formGroup]="addTaskForm" (ngSubmit)="submitForm.emit(addTaskForm)">
+      <span class="form-title">Create new task</span>
+      <input type="text" placeholder="Name" formControlName="name">
+      <input type="text" placeholder="Description" formControlName="description">
+      <select formControlName="status">
+        <option value="NEW">NEW</option>
+        <option value="IN PROCESS">IN PROCESS</option>
+        <option value="DONE">DONE</option>
+      </select>
+      <button type="submit">Create</button>
+    </form>
+  </div>
+</div>

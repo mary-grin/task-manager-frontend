@@ -1,0 +1,16 @@
+<div class="board" [id]="board._id" #actual_board>
+  <div class="board-name">
+    <span class="name" (click)="loadTasks(board._id)">{{board.name}}</span>
+    <div class="details-block">
+      <img src="assets/image/options_light.svg" (click)="toggleDetails()" alt="details">
+      <div *ngIf="details" class="details">
+        <span (click)="editEmitter.emit(board._id)">Edit</span>
+        <span (click)="delete(actual_board)">Delete</span>
+      </div>
+    </div>
+  </div>
+  <div class="board-details" (click)="loadTasks(board._id)">
+    <span>{{board.createdDate.toLocaleString() | date: 'dd/MM/yyyy HH:mm'}}</span>
+    <span>{{board.description}}</span>
+  </div>
+</div>

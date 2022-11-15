@@ -1,0 +1,24 @@
+<div class="popup">
+  <div class="popup-body">
+    <img src="assets/image/closeButton.svg" class="close" (click)="closeUserInfo.emit()">
+    <div class="user-details">
+      <div class="avatar">
+        <form [formGroup]="form">
+          <input type="file" class="hidden" id="file" formControlName="image" (change)="onFileUpload($event)">
+          <label *ngIf="!avatar" for="file">
+            <div class="hover-img"></div>
+            <img src="assets/image/default_avatar.svg" class="image" alt="User Default Avatar">
+          </label>
+          <label *ngIf="avatar" for="file">
+            <div class="hover-img">
+              <img class="pre-image" src="assets/image/pre-image.svg" alt="User Default Avatar">
+            </div>
+            <img src="http://localhost:5000/{{avatar}}" class="image" alt="User Avatar">
+          </label>
+        </form>
+      </div>
+      <span>{{username}}</span>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div *ngIf="tasks">
+  <div class="status">{{status}}</div>
+  <div class="tasks">
+    <ng-container *ngFor="let task of tasks | filter: searchText">
+      <ng-container *ngIf="task.status === status">
+        <app-task [task]="task"></app-task>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
